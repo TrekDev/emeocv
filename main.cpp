@@ -51,11 +51,11 @@ static void testOcr(ImageInput* pImageInput) {
 
     KNearestOcr ocr(config);
     if (! ocr.loadTrainingData()) {
-        std::cout << "Failed to load OCR training data\n";
+        //std::cout << "Failed to load OCR training data\n";
         return;
     }
-    std::cout << "OCR training data loaded.\n";
-    std::cout << "<q> to quit.\n";
+    //std::cout << "OCR training data loaded.\n";
+    //std::cout << "<q> to quit.\n";
 
     while (pImageInput->nextImage()) {
         proc.setInput(pImageInput->getImage());
@@ -63,17 +63,17 @@ static void testOcr(ImageInput* pImageInput) {
 
         std::string result = ocr.recognize(proc.getOutput());
         std::cout << result;
-        if (plausi.check(result, pImageInput->getTime())) {
-            std::cout << "  " << std::fixed << std::setprecision(1) << plausi.getCheckedValue() << std::endl;
-        } else {
-            std::cout << "  -------" << std::endl;
-        }
-        int key = cv::waitKey(delay);
+        //if (plausi.check(result, pImageInput->getTime())) {
+            //std::cout << "  " << std::fixed << std::setprecision(1) << plausi.getCheckedValue() << std::endl;
+        //} else {
+            //std::cout << "  -------" << std::endl;
+        //}
+        //int key = cv::waitKey(delay);
 
-        if (key == 'q') {
-            std::cout << "Quit\n";
-            break;
-        }
+        //if (key == 'q') {
+            //std::cout << "Quit\n";
+            //break;
+        //}
     }
 }
 
