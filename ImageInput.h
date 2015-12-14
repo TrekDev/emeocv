@@ -54,4 +54,10 @@ private:
     cv::VideoCapture _capture;
 };
 
+class StandardInput : public ImageInput
+{
+public:
+    virtual bool nextImage();
+};
+
 #endif /* IMAGEINPUT_H_ */

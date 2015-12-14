@@ -245,7 +245,7 @@ int main(int argc, char **argv) {
     char cmd = 0;
     int cmdCount = 0;
 
-    while ((opt = getopt(argc, argv, "i:c:ltaws:o:v:h")) != -1) {
+    while ((opt = getopt(argc, argv, "i:c:pltaws:o:v:h")) != -1) {
         switch (opt) {
             case 'i':
                 pImageInput = new DirectoryInput(Directory(optarg, ".png"));
@@ -255,6 +255,10 @@ int main(int argc, char **argv) {
                 pImageInput = new CameraInput(atoi(optarg));
                 inputCount++;
                 break;
+            case 'p':
+            	pImageInput = new StandardInput();
+            	inputCount++;
+            	break;
             case 'l':
             case 't':
             case 'a':

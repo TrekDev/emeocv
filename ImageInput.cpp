@@ -7,6 +7,7 @@
 #include <string>
 #include <list>
 #include <iostream>
+#include <vector>
 
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -95,6 +96,25 @@ bool CameraInput::nextImage() {
         saveImage();
     }
 
+    return success;
+}
+
+bool StandardInput::nextImage()
+{
+    time(&_time);
+    int c;
+    std::vector<uchar> buff;
+    while(EOF != (c = fgetc(stdin)))
+    {
+        buff.push_back(c);
+    }
+
+    bool success = buff.size() > 0;
+    if(success)
+    {
+        _img = cv::imdecode(cv::Mat(buff), CV_LOAD_IMAGE_COLOR);
+    }
+    
     return success;
 }
 
