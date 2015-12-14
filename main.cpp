@@ -44,8 +44,8 @@ static void testOcr(ImageInput* pImageInput) {
     Config config;
     config.loadConfig();
     ImageProcessor proc(config);
-    proc.debugWindow();
-    proc.debugDigits();
+    //proc.debugWindow();
+    //proc.debugDigits();
 
     Plausi plausi;
 
@@ -62,7 +62,7 @@ static void testOcr(ImageInput* pImageInput) {
         proc.process();
 
         std::string result = ocr.recognize(proc.getOutput());
-        std::cout << result;
+        std::cout << result << std::endl;
         //if (plausi.check(result, pImageInput->getTime())) {
             //std::cout << "  " << std::fixed << std::setprecision(1) << plausi.getCheckedValue() << std::endl;
         //} else {
